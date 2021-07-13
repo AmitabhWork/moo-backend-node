@@ -2,7 +2,7 @@
 
 Backend api for Moo using Nest framework (Nodejs + TypeScript + PostgreSQL)
 
-![NodeJs Workflow](https://github.com/AmitabhWork/moo-backend-node/actions/workflows/main.yml/badge.svg)
+![NodeJs Workflow](https://github.com/AmitabhWork/moo-backend-node/actions/workflows/nodejs.yml/badge.svg)
 
 ## Installation
 

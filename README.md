@@ -1,4 +1,5 @@
-##Moo- A tweeter clone by Amitabh Sarkar
+## Moo- A tweeter clone by Amitabh Sarkar
+
 Backend api for Moo using Nest framework (Nodejs + TypeScript + PostgreSQL)
 
 ## Description

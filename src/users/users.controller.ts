@@ -2,23 +2,32 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   Patch,
   Post,
   Put,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { NotFoundError } from 'rxjs';
+import { UsersService } from './users.service';
 @ApiTags('users')
 @Controller('users')
 export class UsersController {
+  constructor(private userService: UsersService) {}
+
   @Get('/')
   getHashtags(): string {
     // TODO: add code
     return 'all top Users';
   }
   @Get('/@:username')
-  getUserByUsername(@Param('username') username: string): string {
-    return `details of usernaem = ${username}`;
+  async getUserByUsername(@Param('username') username: string): Promise<any> {
+    const user = await this.userService.getUserByUserName(username);
+    if (!user) {
+      throw new NotFoundException(`User ${username} not found`);
+    }
+    return user;
   }
   @Get('/:userid')
   getUserByUserId(@Param('userid') userid: string): string {

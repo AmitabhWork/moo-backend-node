@@ -1,5 +1,14 @@
-import { Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
-
+import {
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Put,
+} from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
   @Get('/')
@@ -8,12 +17,12 @@ export class UsersController {
     return 'all top Users';
   }
   @Get('/@:username')
-  getUserByUsername(@Param() _param): string {
-    return `details of usernaem = ${_param.username}`;
+  getUserByUsername(@Param('username') username: string): string {
+    return `details of usernaem = ${username}`;
   }
-  @Get('/:userId')
-  getUserByUserId(@Param() _param): string {
-    return `details of userId = ${_param.userId}`;
+  @Get('/:userid')
+  getUserByUserId(@Param('userid') userid: string): string {
+    return `details of userId = ${userid}`;
   }
   @Post('/')
   createNewUser(): string {
@@ -21,8 +30,8 @@ export class UsersController {
   }
 
   @Patch('/:userid')
-  updateUserDetails(@Param() param): string {
-    return `details of user (id = ${param.userid}) updated`;
+  updateUserDetails(@Param('userid') userid: string): string {
+    return `details of user (id = ${userid}) updated`;
   }
 
   @Put('/:userid/follow')

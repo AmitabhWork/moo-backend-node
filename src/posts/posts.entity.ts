@@ -1,9 +1,11 @@
 import { MooBaseEntity } from 'src/commons/base.entity';
-import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { UserEntity } from 'src/users/users.entity';
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne } from 'typeorm';
 @Entity('posts')
 export class PostEntity extends MooBaseEntity {
   @Column({ length: 240, nullable: true })
   text: string;
+
 
   @Column('json', { default: [] })
   images: Array<string>;
@@ -27,6 +29,13 @@ export class PostEntity extends MooBaseEntity {
   @OneToOne(() => PostEntity)
   @JoinColumn({ name: 'reply_to_id' })
   replyTo: PostEntity;
+
+  @ManyToOne(() => UserEntity)
+  @JoinColumn({ name: 'author_id' })
+  author: UserEntity;
+
+  @Column('json', { default: [] })
+  test: Array<string>;
 }
 class Mention {
   name: string;

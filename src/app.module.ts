@@ -8,6 +8,8 @@ import { UserEntity } from './users/users.entity';
 import { PostEntity } from './posts/posts.entity';
 import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
+import { PostsModule } from './posts/posts.module';
+import { HashtagsModule } from './hashtags/hashtags.module';
 
 @Module({
   imports: [
@@ -22,8 +24,10 @@ import { UsersModule } from './users/users.module';
       entities: [UserEntity, PostEntity],
     }),
     UsersModule,
+    PostsModule,
+    HashtagsModule,
   ],
-  controllers: [AppController, PostsController, HashtagsController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

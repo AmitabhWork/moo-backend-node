@@ -5,10 +5,14 @@ import { Column, Entity } from 'typeorm';
 export class UserEntity extends MooBaseEntity {
   @Column({ length: 30, nullable: false, unique: true })
   username: string;
+  
+  @Column({ length: 50, nullable: false, unique: true })
+  name: string;
 
+  @Column({ nullable: true })
   avtar: string;
 
-  @Column({ length: 240 })
+  @Column({ nullable: true, length: 240 })
   bio: string;
 
   @Column({ name: 'follower_count', default: 0 })
